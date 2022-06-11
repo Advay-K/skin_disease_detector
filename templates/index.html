@@ -1,0 +1,97 @@
+{% extends 'base.html' %}{% block content %}
+
+
+<style>
+    .main-text{
+        text-align: center;
+        display: block;
+        font-size: 40px;
+        padding: 10px;
+        transform: translate(0%, 200%);
+
+    }
+
+    .video-div{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -40%);
+        padding: 10px;
+        width: 70%;
+        height: 50%;
+    }
+
+    .vid{
+        border: 5px solid #2C3E50;
+        transform: translate(50%, 0%);
+
+    }
+
+    input[type = "submit"]{
+        display: inline-block;
+        background-color: #2C3E50;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        font-size: 15px;
+        padding: 10px;
+        width: 150px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        position:relative;
+        transform: translate(375%, 900%);
+        font-family: Trebuchet MS;
+    }
+
+     input[type = "submit"] span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      input[type = "submit"] span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        transition: 0.5s;
+      }
+      input[type = "submit"]:hover {
+        background-color: #B8B5B0;
+      }
+      input[type = "submit"]:hover span {
+        padding-right: 25px;
+      }
+      input[type = "submit"]:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+
+      .results-disease{
+        transform: translate(37%, 1300%);
+        font-size: 30px;
+      }
+
+
+</style>
+
+<h1 class = 'main-text'> Real-Time Skin Disease Detector</h1>
+
+
+
+<div class = 'video-div'>
+    <img class = 'vid' src="{{ url_for('video_feed') }}" width="50%">
+</div>
+
+<form method = "post" action = "{{url_for('tasks')}}">
+    <input class = 'capture' type = 'submit' value = 'Capture & Detect' name = 'click'/>
+</form>
+
+
+<h1 class = "results-disease">{{results}}</h1>
+
+{% endblock %}
